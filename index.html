@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damak Künefe İskenderun | Online Linkler & Menü</title>
+    
+    <link rel="icon" type="image/png" href="resimler/favicon.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-touch-callout: none;
+        }
+
+        body {
+            background: linear-gradient(165deg, #5c79be 0%, #7d5a89 50%, #904778 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 15px;
+            color: white;
+        }
+
+        .bio-container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        /* Logo */
+        .logo-wrapper {
+            width: 115px;
+            height: 115px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            border: 4px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 4px 15px rgba(0,0,0,0.4);
+            overflow: hidden;
+            background: #2b0404;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Başlıklar */
+        .title {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #4b5d3b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            -webkit-text-stroke: 1.2px #d4af37;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.4),
+                         2px 2px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 3px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #f1c40f;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Buton Listesi */
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .link-item {
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+
+        .btn-yellow {
+            background-color: #ffcc00;
+            color: #111;
+            border: none;
+        }
+
+        .btn-yellow:hover {
+            background-color: #e6b800;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.22);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.32);
+        }
+
+        .arrow-icon {
+            position: absolute;
+            right: 18px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .link-item.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Açılan İçerik Kutusu */
+        .content-box {
+            display: none;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            margin-top: 8px;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Menü Kategori Başlıkları */
+        .category-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #ffcc00;
+            text-transform: uppercase;
+            margin: 12px 0 6px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+            padding-bottom: 3px;
+        }
+
+        .menu-note {
+            font-size: 0.68rem;
+            color: #ffd54f;
+            text-align: center;
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+
+        /* Grid Sistemleri */
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .four-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+
+        /* Genel Kart Tasarımı */
+        .menu-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 110px; 
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-info {
+            padding: 5px 3px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .menu-title {
+            font-weight: 700;
+            font-size: 0.58rem;
+            color: #111;
+            line-height: 1.1;
+            margin-bottom: 3px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 19px;
+        }
+
+        .menu-price {
+            font-weight: 800;
+            font-size: 0.62rem;
+            color: #b71c1c;
+            background: #ffebee;
+            padding: 2px 2px;
+            border-radius: 4px;
+            border: 1px solid #ffcdd2;
+            display: block;
+        }
+
+        .action-btn {
+            display: block;
+            background: #d32f2f;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        /* IBAN Kutusu ve Kopyala Butonu */
+        .iban-container {
+            background: #111;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 6px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+        }
+
+        .iban-text {
+            color: #ffcc00 !important;
+            font-family: monospace;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        footer {
+            margin-top: 35px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bio-container">
+
+        <div class="logo-wrapper">
+            <img src="resimler/logo.jpg" alt="Damak Künefe">
+        </div>
+
+        <h1 class="title">DAMAK KÜNEFE</h1>
+        <p class="subtitle">HATAY İSKENDERUN</p>
+
+        <div class="link-list">
+
+            <!-- 1. Menü Butonu -->
+            <div class="link-item">
+                <div class="btn btn-yellow" onclick="toggleAccordion(this)">
+                    🌐 Menü için lütfen tıklayınız...
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    
+                    <div class="category-title">Künefe Çeşitleri</div>
+                    <div class="menu-note">Not: Ekstra servis ücrete tabiidir</div>
+                    <div class="three-grid">
+                        <div class="menu-card">
+                            <img src="resimler/kunefe.jpg" alt="Porsiyon Künefe" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Porsiyon Künefe</span>
+                                <span class="menu-price">200 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/kunefe.jpg" alt="3 Kişilik Künefe" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">3 Kişilik Künefe</span>
+                                <span class="menu-price">600 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/kunefe.jpg" alt="5/6 Kişilik Künefe" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">5/6 Kişilik Künefe</span>
+                                <span class="menu-price">1000 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-title">Tatlı & Ek Lezzetler</div>
+                    <div class="three-grid">
+                        <div class="menu-card">
+                            <img src="resimler/katmer.jpg" alt="Katmer" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Fıstıklı Kaymaklı Katmer</span>
+                                <span class="menu-price">250 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/kabak.jpg" alt="Kabak Tatlısı" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Kabak Tatlısı (Porsiyon)</span>
+                                <span class="menu-price">120 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/kombe.jpg" alt="Cevizli Kömbe" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Cevizli Kömbe Porsiyon</span>
+                                <span class="menu-price">120 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-title">Dondurma, Kaymak & Ekstralar</div>
+                    <div class="three-grid">
+                        <div class="menu-card">
+                            <img src="resimler/dondurma.jpg" alt="Kesme Dondurma" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Maraş Kesme Dondurma (70gr)</span>
+                                <span class="menu-price">100 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/kaymak.jpg" alt="Süt Kaymak" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Süt Kaymak (Porsiyon)</span>
+                                <span class="menu-price">75 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/fistik.jpg" alt="Antep Fıstık" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Ekstra Antep Fıstığı</span>
+                                <span class="menu-price">50 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-title">İçecekler</div>
+                    <div class="four-grid">
+                        <div class="menu-card">
+                            <img src="resimler/kahve.jpg" alt="Türk Kahvesi" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Türk Kahvesi</span>
+                                <span class="menu-price">75 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/cay.jpg" alt="Çay" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Çay</span>
+                                <span class="menu-price">25 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/soda.jpg" alt="Soda" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Soda</span>
+                                <span class="menu-price">30 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <img src="resimler/su.jpg" alt="Su" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Su</span>
+                                <span class="menu-price">15 ₺</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. Bizi Değerlendirin -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    ⭐ Bizi Değerlendirin
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.85rem; margin-bottom: 8px;">Deneyiminizi paylaşarak bize destek olabilirsiniz:</p>
+                    <a href="https://maps.app.goo.gl/G5MxbTGv8fKPx8Le7" target="_blank" class="action-btn" style="background:#4285F4;">Google'da Yorum Yap</a>
+                </div>
+            </div>
+
+            <!-- 3. Instagram Hesabımız -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    📷 Instagram Hesabımız
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.85rem; margin-bottom: 8px;">Lezzet videolarımızı takip edin:</p>
+                    <a href="https://www.instagram.com/damak_kunefe_/" target="_blank" class="action-btn" style="background:#E1306C;">@damak_kunefe_</a>
+                </div>
+            </div>
+
+            <!-- 4. IBAN Bilgileri -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    💳 IBAN Bilgileri
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.8rem; opacity: 0.9; text-align: center;"><strong>Ziraat Bankası</strong> - Damak Künefe</p>
+                    
+                    <div class="iban-container">
+                        <div class="iban-text" id="ibanNumara">TR77 0001 5001 5800 7308 8423 41</div>
+                        <button class="action-btn" style="background:#ffcc00; color:#111; margin-top:5px; padding:8px;" onclick="ibanKopyala()">📋 IBAN'ı Kopyala</button>
+                    </div>
+
+                    <p style="font-size: 0.75rem; text-align: center; color: #ccc;">Bilge ATLI</p>
+                </div>
+            </div>
+
+            <!-- 5. WhatsApp İletişim -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    💬 WhatsApp İletişim
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.85rem;">Sipariş ve bilgi için doğrudan yazabilirsiniz:</p>
+                    <a href="https://wa.me/905321637359" target="_blank" class="action-btn" style="background:#25D366;">WhatsApp Sipariş Hattı</a>
+                </div>
+            </div>
+
+            <!-- 6. Bize Ulaşın (Telefon) -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    📞 Bize Ulaşın (Telefon)
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.85rem; margin-bottom: 5px;">Müşteri Hizmetleri & Paket Servis:</p>
+                    <a href="tel:05321637359" class="action-btn" style="background:#d32f2f;">Ara: 0 (532) 163 73 59</a>
+                </div>
+            </div>
+
+            <!-- 7. Rehbere Kaydet -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    👤 Rehbere Kaydet
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.85rem; margin-bottom: 8px;">İşletmemizi tek tıkla telefon rehberinize ekleyin:</p>
+                    <button class="action-btn" style="background:#0288d1;" onclick="rehbereKaydet()">Rehbere Kaydet</button>
+                </div>
+            </div>
+
+            <!-- 8. Google Konum -->
+            <div class="link-item">
+                <div class="btn btn-glass" onclick="toggleAccordion(this)">
+                    📍 Damak Künefe Google Konum
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="content-box">
+                    <p style="font-size: 0.85rem; margin-bottom: 8px;"><strong>Adres:</strong> İskenderun / HATAY</p>
+                    <a href="https://maps.app.goo.gl/G5MxbTGv8fKPx8Le7" target="_blank" class="action-btn" style="background:#0F9D58;">Haritada Yol Tarifi Al</a>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            © 2026 Damak Künefe (Tüm Hakları Saklıdır)
+        </footer>
+
+    </div>
+
+    <script>
+        function toggleAccordion(element) {
+            const linkItem = element.parentElement;
+            const contentBox = linkItem.querySelector('.content-box');
+            
+            document.querySelectorAll('.link-item').forEach(item => {
+                if (item !== linkItem) {
+                    item.classList.remove('active');
+                    const box = item.querySelector('.content-box');
+                    if (box) box.style.display = 'none';
+                }
+            });
+
+            if (contentBox.style.display === 'block') {
+                contentBox.style.display = 'none';
+                linkItem.classList.remove('active');
+            } else {
+                contentBox.style.display = 'block';
+                linkItem.classList.add('active');
+            }
+        }
+
+        function ibanKopyala() {
+            const ibanText = document.getElementById("ibanNumara").innerText;
+            navigator.clipboard.writeText(ibanText).then(() => {
+                alert("IBAN başarıyla kopyalandı!");
+            }).catch(err => {
+                alert("Kopyalanamadı, lütfen elle seçin.");
+            });
+        }
+
+        function rehbereKaydet() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Damak Künefe İskenderun\nTEL:+905321637359\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8"  });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "DamakKunefe.vcf";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
