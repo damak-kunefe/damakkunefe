@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="date=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
     <title>Damak Künefe İskenderun | Online Linkler & Menü</title>
     
     <link rel="icon" type="image/png" href="resimler/favicon.png">
@@ -257,7 +261,7 @@
             width: 100%;
         }
 
-        /* IBAN Kutusu ve Kopyala Butonu */
+        /* IBAN Kutusu ve Kopyala Butonu (Mavi renk sorununu tamamen kesen özel ayarlar) */
         .iban-container {
             background: #111;
             padding: 12px;
@@ -268,7 +272,6 @@
         }
 
         .iban-text {
-            color: #ffcc00 !important;
             font-family: monospace;
             font-size: 0.9rem;
             font-weight: bold;
@@ -277,6 +280,12 @@
             -webkit-user-select: none;
             user-select: none;
             pointer-events: none;
+        }
+
+        /* Telefonların IBAN'ı mavi yapmasını zorla engelleyen seçici */
+        .iban-text, .iban-text span, .iban-text a {
+            color: #ffcc00 !important;
+            text-decoration: none !important;
         }
 
         footer {
@@ -552,6 +561,7 @@
             const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8"  });
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
+            a.href.indexOf = url; // Güvenlik önlemi
             a.href = url;
             a.download = "DamakKunefe.vcf";
             document.body.appendChild(a);
