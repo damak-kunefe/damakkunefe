@@ -194,6 +194,17 @@
             margin-bottom: 10px;
         }
 
+        /* Tekli veya ortalanacak kartlar için özel sınıf */
+        .single-grid {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .single-grid .menu-card {
+            width: calc(33.333% - 4px);
+        }
+
         /* Genel Kart Tasarımı */
         .menu-card {
             background: rgba(255, 255, 255, 0.95);
@@ -209,7 +220,8 @@
         .menu-img {
             width: 100%;
             height: 110px; 
-            object-fit: cover;
+            object-fit: contain; 
+            background-color: #fcfcfc; 
             display: block;
         }
 
@@ -261,7 +273,7 @@
             width: 100%;
         }
 
-        /* IBAN Kutusu ve Kopyala Butonu (Mavi renk sorununu tamamen kesen özel ayarlar) */
+        /* IBAN Kutusu ve Kopyala Butonu */
         .iban-container {
             background: #111;
             padding: 12px;
@@ -282,7 +294,6 @@
             pointer-events: none;
         }
 
-        /* Telefonların IBAN'ı mavi yapmasını zorla engelleyen seçici */
         .iban-text, .iban-text span, .iban-text a {
             color: #ffcc00 !important;
             text-decoration: none !important;
@@ -352,12 +363,22 @@
                             </div>
                         </div>
                         <div class="menu-card">
+                            <img src="resimler/irmik.jpg" alt="Hatay Usulü Peynirli ve Tereyağlı İrmik Tatlısı" class="menu-img">
+                            <div class="menu-info">
+                                <span class="menu-title">Hatay Usulü Peynirli ve Tereyağlı İrmik Tatlısı</span>
+                                <span class="menu-price">210 ₺</span>
+                            </div>
+                        </div>
+                        <div class="menu-card">
                             <img src="resimler/kabak.jpg" alt="Kabak Tatlısı" class="menu-img">
                             <div class="menu-info">
                                 <span class="menu-title">Çıtır Kabak Tatlısı (Tahin ile servis edilir)</span>
                                 <span class="menu-price">150 ₺</span>
                             </div>
                         </div>
+                    </div>
+                    <!-- Cevizli Kömbe Ortalandı -->
+                    <div class="single-grid">
                         <div class="menu-card">
                             <img src="resimler/kombe.jpg" alt="Cevizli Kömbe" class="menu-img">
                             <div class="menu-info">
@@ -558,10 +579,9 @@
 
         function rehbereKaydet() {
             const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Damak Künefe İskenderun\nTEL:+905321637359\nEND:VCARD";
-            const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8"  });
+            const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
-            a.href.indexOf = url; // Güvenlik önlemi
             a.href = url;
             a.download = "DamakKunefe.vcf";
             document.body.appendChild(a);
